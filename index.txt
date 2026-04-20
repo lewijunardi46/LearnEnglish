@@ -1,6 +1,33 @@
-# Vocab Lab — Manifest File
-# Format: filename.html | word | YYYY-MM-DD | part of speech | preview (singkat) | level
+# Vocab Lab — index.txt
+# Format: filename.html | word | YYYY-MM-DD | part of speech | preview singkat | level
 # Level: new | learning | mastered
 # Baris diawali # diabaikan (komentar)
+# ─────────────────────────────────────────────────────────────────────────────
 
-gravitate.html | gravitate | 2026-04-20 | verb | Tertarik secara alami ke suatu arah, orang, atau hal — seperti ada magnet tak kasat mata. | new
+# ── B1 — Everyday Vocabulary ─────────────────────────────────────────────────
+trust.html | trust | 2026-04-20 | noun/verb | Keyakinan kuat bahwa seseorang atau sesuatu itu jujur, dapat diandalkan, dan tidak akan merugikanmu. | new
+honest.html | honest | 2026-04-20 | adjective | Berkata atau bertindak sesuai kebenaran — tidak berbohong, tidak menipu, tidak berpura-pura. | new
+comfort.html | comfort | 2026-04-20 | noun/verb | Rasa nyaman yang menenangkan — atau tindakan menghibur seseorang yang sedang kesulitan. | new
+understand.html | understand | 2026-04-20 | verb | Menangkap makna sesuatu secara mendalam — bisa konsep, situasi, atau perasaan orang lain. | new
+fear.html | fear | 2026-04-20 | noun/verb | Perasaan terancam atau cemas — dari bahaya nyata maupun yang dibayangkan. | new
+effort.html | effort | 2026-04-20 | noun | Energi fisik atau mental yang dicurahkan untuk mencapai sesuatu — lebih dari sekadar mencoba. | new
+grow.html | grow | 2026-04-20 | verb | Berkembang — bisa secara fisik, profesional, emosional, atau bisnis. | new
+future.html | future | 2026-04-20 | noun/adjective | Masa depan — waktu yang belum terjadi, atau sesuatu yang berhubungan dengan masa yang akan datang. | new
+
+# ── B2 — Upper Intermediate ──────────────────────────────────────────────────
+vulnerable.html | vulnerable | 2026-04-20 | adjective | Mudah terluka, terpengaruh, atau diserang — secara fisik, emosional, maupun sistem keamanan. | new
+commitment.html | commitment | 2026-04-20 | noun | Janji atau dedikasi yang dipegang teguh — lebih kuat dan jangka panjang dari sekadar usaha biasa. | new
+
+# ── C1 — Advanced Vocabulary ─────────────────────────────────────────────────
+glut.html | glut | 2026-04-20 | noun/verb | Kelebihan pasokan yang berlebihan hingga menekan nilai atau harga — terlalu banyak sampai jadi masalah. | new
+enigma.html | enigma | 2026-04-20 | noun | Sesuatu atau seseorang yang misterius dan sulit dipahami — teka-teki yang membingungkan. | new
+peruse.html | peruse | 2026-04-20 | verb | Membaca dengan seksama dan penuh perhatian — bukan sekadar scan cepat. | new
+embellish.html | embellish | 2026-04-20 | verb | Memperindah atau menghias — bisa secara fisik maupun menambah-nambahi cerita agar lebih menarik. | new
+valiant.html | valiant | 2026-04-20 | adjective | Gagah berani dan bersungguh-sungguh — terutama dalam menghadapi kesulitan atau perjuangan berat. | new
+unbiased.html | unbiased | 2026-04-20 | adjective | Tidak memihak dan objektif — bebas dari prasangka pribadi, kepentingan, atau emosi. | new
+foresight.html | foresight | 2026-04-20 | noun | Kemampuan melihat dan mempersiapkan masa depan sebelum masalah muncul — pandangan jauh ke depan. | new
+upstart.html | upstart | 2026-04-20 | noun/adjective | Pendatang baru yang naik cepat dan dianggap terlalu percaya diri oleh pihak yang sudah mapan. | new
+cautionary.html | cautionary | 2026-04-20 | adjective | Bersifat memperingatkan — kisah atau contoh kegagalan sebagai pelajaran agar tidak terulang. | new
+
+# ── Referensi (template asal) ────────────────────────────────────────────────
+vocabulary_gravitate.html | gravitate | 2026-04-20 | verb | Tertarik secara alami ke suatu arah, orang, atau hal — seperti ada magnet tak kasat mata. | new
