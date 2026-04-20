@@ -1,0 +1,6 @@
+# Vocab Lab — Manifest File
+# Format: filename.html | word | YYYY-MM-DD | part of speech | preview (singkat) | level
+# Level: new | learning | mastered
+# Baris diawali # diabaikan (komentar)
+
+gravitate.html | gravitate | 2026-04-20 | verb | Tertarik secara alami ke suatu arah, orang, atau hal — seperti ada magnet tak kasat mata. | new
