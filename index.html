@@ -320,22 +320,6 @@
     line-height: 1.7;
   }
 
-  /* ── Error/Loading banner ── */
-  #status-banner {
-    display: none;
-    position: relative;
-    z-index: 1;
-    margin: 0 40px;
-    padding: 14px 18px;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    font-family: 'DM Mono', monospace;
-  }
-
-  #status-banner.info  { background: #e8f0fe; color: #1a73e8; border: 1px solid #c5d8fb; }
-  #status-banner.warn  { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
-  #status-banner.error { background: #fce8e6; color: #c0392b; border: 1px solid #f5c6c2; }
-
   /* ── Footer ── */
   footer {
     position: relative;
@@ -438,9 +422,25 @@
   </div>
 </header>
 
-
-<!-- Status / error banner -->
-<div id="status-banner"></div>
+<!-- How-to banner -->
+<div class="howto" id="howto-panel">
+  <div>
+    <h3>📖 Cara Menambah Kosakata Baru</h3>
+    <ol>
+      <li>Simpan file HTML flashcard baru ke folder yang sama dengan <code>index.html</code></li>
+      <li>Buka <code>index.html</code> dengan teks editor (Notepad, VS Code, dll)</li>
+      <li>Cari bagian <code>const VOCAB_LIST = `</code> di dalam file</li>
+      <li>Tambahkan baris baru dengan format:<br>
+        <code>namafile.html | kata | YYYY-MM-DD | pos | preview | level</code></li>
+      <li>Simpan file, refresh browser — kartu baru langsung muncul ✓</li>
+    </ol>
+    <p style="font-size:0.78rem; color:#a09880; margin-top:8px;">
+      Level: <strong style="color:#7ec880">new</strong> · <strong style="color:#f0c060">learning</strong> · <strong style="color:#60a8f0">mastered</strong>
+      &nbsp;·&nbsp; Bisa dibuka langsung via <code>file://</code> tanpa server
+    </p>
+  </div>
+  <button class="howto-close" onclick="document.getElementById('howto-panel').style.display='none'" title="Tutup">✕</button>
+</div>
 
 <!-- Toolbar -->
 <div class="toolbar">
@@ -473,22 +473,47 @@
 </footer>
 
 <script>
-  /* ──────────────────────────────────────────
-     CONFIG
-  ────────────────────────────────────────── */
-  const MANIFEST_FILE = 'index.txt';
+  /* ════════════════════════════════════════════════════════
+     📝 DAFTAR KOSAKATA — EDIT BAGIAN INI UNTUK TAMBAH KATA
+     Format tiap baris di dalam VOCAB_LIST (string):
+     filename.html | word | YYYY-MM-DD | part of speech | preview singkat | level
+     Level: new | learning | mastered
+     Baris diawali # diabaikan (komentar)
+  ════════════════════════════════════════════════════════ */
+  const VOCAB_LIST = `
+# ── Tambahkan kata baru di bawah baris terakhir ───────────
+# Format: filename.html | kata | YYYY-MM-DD | pos | preview | level
+# Level: new | learning | mastered
 
-  // Fallback data jika index.txt tidak ditemukan (untuk demo/testing)
-  const FALLBACK_ENTRIES = [
-    {
-      file: 'gravitate.html',
-      word: 'gravitate',
-      date: '2026-04-20',
-      pos: 'verb',
-      preview: 'Tertarik secara alami ke suatu arah, orang, atau hal — seperti ada magnet tak kasat mata.',
-      level: 'new'
-    }
-  ];
+# B1 — Everyday Vocabulary
+trust.html | trust | 2026-04-20 | noun/verb | Keyakinan kuat bahwa seseorang atau sesuatu itu jujur, dapat diandalkan, dan tidak akan merugikanmu. | new
+honest.html | honest | 2026-04-20 | adjective | Berkata atau bertindak sesuai kebenaran — tidak berbohong, tidak menipu, tidak berpura-pura. | new
+comfort.html | comfort | 2026-04-20 | noun/verb | Rasa nyaman yang menenangkan — atau tindakan menghibur seseorang yang sedang kesulitan. | new
+understand.html | understand | 2026-04-20 | verb | Menangkap makna sesuatu secara mendalam — bisa konsep, situasi, atau perasaan orang lain. | new
+fear.html | fear | 2026-04-20 | noun/verb | Perasaan terancam atau cemas — dari bahaya nyata maupun yang dibayangkan. | new
+effort.html | effort | 2026-04-20 | noun | Energi fisik atau mental yang dicurahkan untuk mencapai sesuatu — lebih dari sekadar mencoba. | new
+grow.html | grow | 2026-04-20 | verb | Berkembang — bisa secara fisik, profesional, emosional, atau bisnis. | new
+future.html | future | 2026-04-20 | noun/adjective | Masa depan — waktu yang belum terjadi, atau sesuatu yang berhubungan dengan masa yang akan datang. | new
+
+# B2 — Upper Intermediate
+vulnerable.html | vulnerable | 2026-04-20 | adjective | Mudah terluka, terpengaruh, atau diserang — secara fisik, emosional, maupun sistem keamanan. | new
+commitment.html | commitment | 2026-04-20 | noun | Janji atau dedikasi yang dipegang teguh — lebih kuat dan jangka panjang dari sekadar usaha biasa. | new
+
+# C1 — Advanced Vocabulary
+glut.html | glut | 2026-04-20 | noun/verb | Kelebihan pasokan yang berlebihan hingga menekan nilai atau harga — terlalu banyak sampai jadi masalah. | new
+enigma.html | enigma | 2026-04-20 | noun | Sesuatu atau seseorang yang misterius dan sulit dipahami — teka-teki yang membingungkan. | new
+peruse.html | peruse | 2026-04-20 | verb | Membaca dengan seksama dan penuh perhatian — bukan sekadar scan cepat. | new
+embellish.html | embellish | 2026-04-20 | verb | Memperindah atau menghias — bisa secara fisik maupun menambah-nambahi cerita agar lebih menarik. | new
+valiant.html | valiant | 2026-04-20 | adjective | Gagah berani dan bersungguh-sungguh — terutama dalam menghadapi kesulitan atau perjuangan berat. | new
+unbiased.html | unbiased | 2026-04-20 | adjective | Tidak memihak dan objektif — bebas dari prasangka pribadi, kepentingan, atau emosi. | new
+foresight.html | foresight | 2026-04-20 | noun | Kemampuan melihat dan mempersiapkan masa depan sebelum masalah muncul — pandangan jauh ke depan. | new
+upstart.html | upstart | 2026-04-20 | noun/adjective | Pendatang baru yang naik cepat dan dianggap terlalu percaya diri oleh pihak yang sudah mapan. | new
+cautionary.html | cautionary | 2026-04-20 | adjective | Bersifat memperingatkan — kisah atau contoh kegagalan sebagai pelajaran agar tidak terulang. | new
+
+# Template asal
+vocabulary_gravitate.html | gravitate | 2026-04-20 | verb | Tertarik secara alami ke suatu arah, orang, atau hal — seperti ada magnet tak kasat mata. | new
+  `;
+  /* ════════════════════════════════════════════════════════ */
 
   /* ──────────────────────────────────────────
      STATE
@@ -499,9 +524,7 @@
   let sortMode = 'date-desc';
 
   /* ──────────────────────────────────────────
-     PARSE index.txt
-     Format per baris:
-     filename.html | word | YYYY-MM-DD | pos | preview | level
+     PARSE VOCAB_LIST
   ────────────────────────────────────────── */
   function parseLine(line) {
     const trimmed = line.trim();
@@ -519,32 +542,10 @@
   }
 
   /* ──────────────────────────────────────────
-     FETCH MANIFEST
+     LOAD — baca langsung dari VOCAB_LIST
   ────────────────────────────────────────── */
-  async function loadManifest() {
-    showBanner('Memuat index.txt...', 'info');
-    try {
-      const resp = await fetch(MANIFEST_FILE + '?nocache=' + Date.now());
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      const text = await resp.text();
-      const lines = text.split('\n');
-      allEntries = lines.map(parseLine).filter(Boolean);
-
-      if (allEntries.length === 0) {
-        showBanner('index.txt kosong. Menampilkan data contoh.', 'warn');
-        allEntries = FALLBACK_ENTRIES;
-      } else {
-        hideBanner();
-      }
-    } catch (err) {
-      // Kemungkinan besar file:// protocol atau index.txt belum ada
-      showBanner(
-        `⚠ Tidak bisa membaca index.txt (${err.message}). ` +
-        `Pastikan kamu membuka via server lokal, bukan file://. Menampilkan data demo.`,
-        'warn'
-      );
-      allEntries = FALLBACK_ENTRIES;
-    }
+  function loadManifest() {
+    allEntries = VOCAB_LIST.split('\n').map(parseLine).filter(Boolean);
     updateHeaderCount();
     renderCards();
   }
@@ -639,21 +640,6 @@
       document.getElementById('last-added').textContent =
         'Terakhir: ' + formatDate(latest.date);
     }
-  }
-
-  /* ──────────────────────────────────────────
-     BANNER HELPERS
-  ────────────────────────────────────────── */
-  function showBanner(msg, type='info') {
-    const b = document.getElementById('status-banner');
-    b.textContent = msg;
-    b.className = type;
-    b.style.display = 'block';
-  }
-
-  function hideBanner() {
-    const b = document.getElementById('status-banner');
-    b.style.display = 'none';
   }
 
   /* ──────────────────────────────────────────
